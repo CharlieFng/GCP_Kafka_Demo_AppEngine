@@ -1,0 +1,11 @@
+{
+  "namespace": "club.charliefeng.avro",
+  "type": "record",
+  "name": "User",
+  "version": "1",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "age",  "type": ["int", "null"]},
+    {"name": "income", "type": ["double", "null"]}
+  ]
+}
