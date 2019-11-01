@@ -5,8 +5,8 @@ app:
         partition_number: 3
         replication_factor: 3
     producer_config:
-      "[bootstrap.servers]": localhost:9092
-      "[schema.registry.url]": http://localhost:8081
+      "[bootstrap.servers]": 127.0.0.1:9092
+      "[schema.registry.url]": http://127.0.0.1:8081
       "[key.serializer]": org.apache.kafka.common.serialization.StringSerializer
       "[value.serializer]": io.confluent.kafka.serializers.KafkaAvroSerializer
       "[auto.register.schemas]": false
@@ -14,8 +14,8 @@ app:
       retries: 3
       acks: all
     consumer_config:
-      "[bootstrap.servers]": localhost:9092
-      "[schema.registry.url]": http://localhost:8081
+      "[bootstrap.servers]": 127.0.0.1:9092
+      "[schema.registry.url]": http://127.0.0.1:8081
       "[key.deserializer]": org.apache.kafka.common.serialization.StringDeserializer
       "[value.deserializer]": io.confluent.kafka.serializers.KafkaAvroDeserializer
       "[group.id]": generic_group

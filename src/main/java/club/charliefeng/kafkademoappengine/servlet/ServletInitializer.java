@@ -1,5 +1,6 @@
-package club.charliefeng.kafkademoappengine;
+package club.charliefeng.kafkademoappengine.servlet;
 
+import club.charliefeng.kafkademoappengine.KafkaDemoApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
