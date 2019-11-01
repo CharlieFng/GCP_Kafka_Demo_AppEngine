@@ -10,14 +10,14 @@ app:
   kafka_props:
     topics:
       - name: demo
-        partition_number: 3
-        replication_factor: 3
+        partition_number: 1
+        replication_factor: 1
     producer_config:
       "[bootstrap.servers]": 127.0.0.1:9092
       "[schema.registry.url]": http://127.0.0.1:8081
       "[key.serializer]": org.apache.kafka.common.serialization.StringSerializer
       "[value.serializer]": io.confluent.kafka.serializers.KafkaAvroSerializer
-      "[auto.register.schemas]": false
+      "[auto.register.schemas]": true
       "[enable.idempotence]": true
       retries: 3
       acks: all

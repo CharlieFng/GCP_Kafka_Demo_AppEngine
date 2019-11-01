@@ -21,9 +21,4 @@ public class KafkaDemoApplication {
 		return "Hello App Engine Standard!";
 	}
 
-	@GetMapping("/time")
-	public String time() {
-		return Calendar.getInstance().getTime().toString();
-	}
-
 }
