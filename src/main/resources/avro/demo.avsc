@@ -5,7 +5,7 @@
   "version": "1",
   "fields": [
     {"name": "name", "type": "string"},
-    {"name": "age",  "type": ["int", "null"]},
-    {"name": "income", "type": ["double", "null"]}
+    {"name": "age",  "type": ["null", "int"], "default": null},
+    {"name": "income", "type": ["null", "double"], "default": null}
   ]
 }

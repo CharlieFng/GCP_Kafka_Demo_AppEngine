@@ -1,6 +1,7 @@
 package club.charliefeng.kafkademoappengine.service;
 
 import club.charliefeng.avro.User;
+import club.charliefeng.kafkademoappengine.exception.ServiceUnavailableException;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
@@ -29,7 +30,7 @@ public class SpecificProducerService {
         specificKafkaProducer.send(producerRecord, (metadata, e) -> {
             if(e != null) {
                 LOG.error("Specific producer send record to kafka failed");
-//                throw new ServiceUnavailableException("Kafka broker is unavailable, send message failed", e.getCause());
+                throw new ServiceUnavailableException("Kafka broker is unavailable, send message failed", e.getCause());
             }else {
                 LOG.info("Successfully sent record to kafka");
             }

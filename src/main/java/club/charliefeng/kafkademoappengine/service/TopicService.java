@@ -3,7 +3,6 @@ package club.charliefeng.kafkademoappengine.service;
 import club.charliefeng.kafkademoappengine.config.AppProperties;
 import club.charliefeng.kafkademoappengine.mapper.TopicMapper;
 import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.CreateTopicsResult;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
