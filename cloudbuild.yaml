@@ -1,0 +1,8 @@
+steps:
+  - id: 'Stage app using mvn appengine plugin on mvn cloud build image'
+    name: 'gcr.io/cloud-builders/mvn'
+    args: ['clean', 'package', 'appengine:stage', '-Pdev']
+  - id: "Deploy to app engine using gcloud image"
+    name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'target/kafka-demo-appengine-0.0.1-SNAPSHOT/WEB-INF/appengine-web.xml']
+timeout: '1600s'

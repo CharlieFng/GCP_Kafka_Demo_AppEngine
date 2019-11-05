@@ -18,7 +18,7 @@ public class KafkaDemoApplication {
 
 	@GetMapping("/")
 	public String hello() {
-		return "Hello App Engine Standard!";
+		return "Confluent Demo App Engine Standard!";
 	}
 
 }

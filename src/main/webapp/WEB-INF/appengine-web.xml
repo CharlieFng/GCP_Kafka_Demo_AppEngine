@@ -5,4 +5,7 @@
     <system-properties>
         <property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties"/>
     </system-properties>
+<!--    <env-variables>-->
+<!--        <env-var name="SPRING_PROFILES_ACTIVE" value="dev" />-->
+<!--    </env-variables>-->
 </appengine-web-app>

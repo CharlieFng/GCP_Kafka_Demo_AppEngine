@@ -131,6 +131,10 @@
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>1.3.2</version>
+<!--				<configuration>-->
+<!--					<deploy.projectId>charlie-feng-contino</deploy.projectId>-->
+<!--					<deploy.version>1.0-RELEASE</deploy.version>-->
+<!--				</configuration>-->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.avro</groupId>

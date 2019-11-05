@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: dev
+
+app:
+  kafka_props:
+    topics:
+      - name: demo
+        partition_number: 1
+        replication_factor: 1
+    producer_config:
+      "[bootstrap.servers]": kafka.charliefeng.club:9092
+      "[schema.registry.url]": http://schemaregistry.charliefeng.club:8081
+      "[key.serializer]": org.apache.kafka.common.serialization.StringSerializer
+      "[value.serializer]": io.confluent.kafka.serializers.KafkaAvroSerializer
+      "[auto.register.schemas]": false
+      "[enable.idempotence]": true
+      "[security.protocol]": SASL_PLAINTEXT
+      "[sasl.mechanism]": PLAIN
+      "[sasl.jaas.config]": org.apache.kafka.common.security.plain.PlainLoginModule required username="test" password="test123";
+      retries: 3
+      acks: all
+    consumer_config:
+      "[bootstrap.servers]": kafka.charliefeng.club:9092
+      "[schema.registry.url]": http://schemaregistry.charliefeng.club:8081
+      "[key.deserializer]": org.apache.kafka.common.serialization.StringDeserializer
+      "[value.deserializer]": io.confluent.kafka.serializers.KafkaAvroDeserializer
+      "[group.id]": generic_group
+      "[enable.auto.commit]": false
+      "[auto.offset.reset]": earliest
+      "[enable.idempotence]": true
+      "[security.protocol]": SASL_PLAINTEXT
+      "[sasl.mechanism]": PLAIN
+      "[sasl.jaas.config]": org.apache.kafka.common.security.plain.PlainLoginModule required username="test" password="test123";
