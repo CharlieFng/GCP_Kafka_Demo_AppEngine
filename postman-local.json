@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "446e0001-109e-4bdf-b414-9f43fb73c78e",
+		"name": "Kafka Demo Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "topic",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"test\",\n        \"partition_number\": 1,\n        \"replication_factor\": 1\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/topic/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"topic",
+								"create"
+							]
+						},
+						"description": "create a topic"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "producer",
+			"item": [
+				{
+					"name": "publish singleton",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Charlie\",\n\t\"age\": 18,\n\t\"income\": 2700\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/publish/specific/singleton",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publish",
+								"specific",
+								"singleton"
+							]
+						},
+						"description": "publish a single record"
+					},
+					"response": []
+				},
+				{
+					"name": "publish batch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Charlie\",\n        \"age\": 18,\n        \"income\": 2700\n    },\n    {\n        \"name\": \"Chorong\",\n        \"age\": 23,\n        \"income\": 1700\n    },\n    {\n        \"name\": \"Kim\",\n        \"age\": 13,\n        \"income\": 700\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/publish/specific/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publish",
+								"specific",
+								"batch"
+							]
+						},
+						"description": "publish a single record"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "consumer",
+			"item": [
+				{
+					"name": "subscribe specific",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribe/specific",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribe",
+								"specific"
+							]
+						},
+						"description": "consumer specific records"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "schema",
+			"item": [
+				{
+					"name": "Retrieve schema",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/schema/demo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"schema",
+								"demo"
+							]
+						},
+						"description": "Fetch latest schema for a topic "
+					},
+					"response": []
+				},
+				{
+					"name": "Create or Update schema",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"record\",\n    \"name\": \"User\",\n    \"namespace\": \"club.charliefeng.avro\",\n    \"fields\": [\n        {\n            \"name\": \"name\",\n            \"type\": \"string\"\n        },\n        {\n            \"name\": \"age\",\n            \"type\": [\n                \"null\",\n                \"int\"\n            ],\n            \"default\": null\n        },\n        {\n            \"name\": \"height\",\n            \"type\": [\n                \"null\",\n                \"double\"\n            ],\n            \"default\": null\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/schema/update/demo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"schema",
+								"update",
+								"demo"
+							]
+						},
+						"description": "create or update schema for a given topic"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "offset",
+			"item": [
+				{
+					"name": "reset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/offset/demo?reset_policy=earliest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"offset",
+								"demo"
+							],
+							"query": [
+								{
+									"key": "reset_policy",
+									"value": "earliest"
+								}
+							]
+						},
+						"description": "reset offset to earliest or latest for a given topic"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
