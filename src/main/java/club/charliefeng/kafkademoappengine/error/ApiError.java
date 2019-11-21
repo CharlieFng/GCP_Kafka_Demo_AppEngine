@@ -64,4 +64,24 @@ public class ApiError {
     public List<ApiSubError> getSubErrors() {
         return subErrors;
     }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setStatus(HttpStatus status) {
+        this.status = status;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public void setDebugMessage(String debugMessage) {
+        this.debugMessage = debugMessage;
+    }
+
+    public void setSubErrors(List<ApiSubError> subErrors) {
+        this.subErrors = subErrors;
+    }
 }
