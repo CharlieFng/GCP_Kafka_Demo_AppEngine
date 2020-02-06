@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 import static club.charliefeng.kafkademoappengine.util.RestUtils.OK;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("subscribe")
@@ -34,14 +35,14 @@ public class ConsumerController {
         this.genericConsumerService = genericConsumerService;
     }
 
-    @GetMapping(path = "/specific", produces = APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(path = "/specific", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserRequest>> subscribeSpecific() {
         List<User> users = specificConsumerService.subscribe();
         List<UserRequest> res = users.stream().map(UserMapper::map).collect(Collectors.toList());
         return OK(res);
     }
 
-    @GetMapping(path = "/generic", produces = APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(path = "/generic", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<JsonNode>> subscribeGeneric() {
         List<GenericRecord> records = genericConsumerService.subscribe();
         List<JsonNode> res = records.stream().map(JsonNodeMapper::map).collect(Collectors.toList());

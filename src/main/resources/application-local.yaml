@@ -18,6 +18,6 @@ app:
       "[schema.registry.url]": http://127.0.0.1:8081
       "[key.deserializer]": org.apache.kafka.common.serialization.StringDeserializer
       "[value.deserializer]": io.confluent.kafka.serializers.KafkaAvroDeserializer
-      "[group.id]": generic_group
+      "[group.id]": shared_consumer_group
       "[enable.auto.commit]": false
       "[auto.offset.reset]": earliest

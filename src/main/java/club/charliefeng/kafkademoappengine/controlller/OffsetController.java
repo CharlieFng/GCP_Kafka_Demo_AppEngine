@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 
 import static club.charliefeng.kafkademoappengine.util.RestUtils.OK;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("offset")
@@ -26,7 +26,7 @@ public class OffsetController {
         this.offsetService = offsetService;
     }
 
-    @PostMapping(path = "/{topic}", produces = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/{topic}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity reset(@PathVariable String topic,
                                 @RequestParam(defaultValue = "earliest") String reset_policy) {
         offsetService.resetOffset(Collections.singletonList(topic),OffsetResetStrategy.valueOf(reset_policy.toUpperCase()));
