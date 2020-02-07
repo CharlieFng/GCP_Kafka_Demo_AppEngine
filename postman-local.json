@@ -51,7 +51,7 @@
 			"name": "producer",
 			"item": [
 				{
-					"name": "publish singleton",
+					"name": "publish singleton [specific]",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -64,7 +64,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Charlie\",\n\t\"age\": 18,\n\t\"income\": 2700\n}"
+							"raw": "{\n\t\"name\": \"Charlie\",\n\t\"age\": 27,\n\t\"income\": 200000\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/publish/specific/singleton",
@@ -84,7 +84,40 @@
 					"response": []
 				},
 				{
-					"name": "publish batch",
+					"name": "publish singleton [generic]",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Charlie\",\n\t\"age\": 27,\n\t\"height\": 185.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/publish/generic/singleton",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publish",
+								"generic",
+								"singleton"
+							]
+						},
+						"description": "publish a single record"
+					},
+					"response": []
+				},
+				{
+					"name": "publish batch [specific]",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -97,7 +130,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"name\": \"Charlie\",\n        \"age\": 18,\n        \"income\": 2700\n    },\n    {\n        \"name\": \"Chorong\",\n        \"age\": 23,\n        \"income\": 1700\n    },\n    {\n        \"name\": \"Kim\",\n        \"age\": 13,\n        \"income\": 700\n    }\n]"
+							"raw": "[\n    {\n        \"name\": \"Eric\",\n        \"age\": 27,\n        \"income\": 200000\n    },\n    {\n        \"name\": \"Aaron\",\n        \"age\": 32,\n        \"income\": 250000\n    },\n    {\n        \"name\": \"Shofyan\",\n        \"age\": 18,\n        \"income\": 180000\n    }\n]"
 						},
 						"url": {
 							"raw": "http://localhost:8080/publish/specific/batch",
@@ -109,6 +142,39 @@
 							"path": [
 								"publish",
 								"specific",
+								"batch"
+							]
+						},
+						"description": "publish a single record"
+					},
+					"response": []
+				},
+				{
+					"name": "publish batch [generic]",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Charlie\",\n        \"age\": 27,\n        \"height\": 185.0\n    },\n    {\n        \"name\": \"Chris\",\n        \"age\": 35,\n        \"height\": 175.5 \n    },\n    {\n        \"name\": \"Tom\",\n        \"age\": 40,\n        \"height\": 190.8\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/publish/generic/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publish",
+								"generic",
 								"batch"
 							]
 						},
@@ -136,6 +202,27 @@
 							"path": [
 								"subscribe",
 								"specific"
+							]
+						},
+						"description": "consumer specific records"
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe generic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribe/generic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribe",
+								"generic"
 							]
 						},
 						"description": "consumer specific records"

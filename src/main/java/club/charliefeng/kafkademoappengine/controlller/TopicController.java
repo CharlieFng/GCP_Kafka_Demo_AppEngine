@@ -2,7 +2,6 @@ package club.charliefeng.kafkademoappengine.controlller;
 
 import club.charliefeng.kafkademoappengine.config.AppProperties;
 import club.charliefeng.kafkademoappengine.dto.TopicRequest;
-import club.charliefeng.kafkademoappengine.dto.UserRequest;
 import club.charliefeng.kafkademoappengine.mapper.TopicMapper;
 import club.charliefeng.kafkademoappengine.service.TopicService;
 import org.slf4j.Logger;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static club.charliefeng.kafkademoappengine.util.RestUtils.CREATED;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("topic")
@@ -31,7 +30,7 @@ public class TopicController {
     @Autowired
     public TopicController(TopicService topicService) {this.topicService = topicService;}
 
-    @PostMapping(path = "/create", produces = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/create", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity createTopic(@RequestBody List<TopicRequest> requests) {
         List<AppProperties.Topic> topics = requests.stream()
                 .map(TopicMapper::map).collect(Collectors.toList());

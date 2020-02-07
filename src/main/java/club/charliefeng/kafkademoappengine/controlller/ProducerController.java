@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static club.charliefeng.kafkademoappengine.util.RestUtils.CREATED;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("publish")
@@ -44,7 +44,7 @@ public class ProducerController {
         this.schemaService = schemaService;
     }
 
-    @PostMapping(path = "/specific/singleton", produces = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/specific/singleton", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<String> publishSpecificRecord(@RequestBody UserRequest request) {
         User user = UserMapper.map(request);
         LOG.info("User recorid is {}", user);
@@ -52,14 +52,14 @@ public class ProducerController {
         return CREATED(user.toString());
     }
 
-    @PostMapping(path = "/specific/batch", produces = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/specific/batch", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<String> publishSpecificBatch(@RequestBody List<UserRequest> requests) {
         List<User> users = requests.stream().map(UserMapper::map).collect(Collectors.toList());
         specificProducerService.publishBatch(users);
         return CREATED(users.toString());
     }
 
-    @PostMapping(path="/generic/singleton", produces = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path="/generic/singleton", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<String> publishGenericRecord(@RequestBody Map<String,Object> request,
                                                        @RequestParam(required = false) String topic) {
         GenericRecord record;
@@ -75,7 +75,7 @@ public class ProducerController {
         return CREATED(record.toString());
     }
 
-    @PostMapping(path = "/generic/batch", produces = APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(path = "/generic/batch", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<String> publishGenericBatch(@RequestBody List<Map<String,Object>> requests,
                                                       @RequestParam(required = false) String topic) {
         List<GenericRecord> records;
