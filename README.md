@@ -1,11 +1,11 @@
 # Kafka Springboot Demo on App Engine
-This demo is a spring boot application using kafka native libraries, aiming to explore kafka basic features such as topic provision, schema evolution, offset adjustment, generic avro producer and consumer, specific avro producer and consumer.
+This demo is a spring boot application using kafka native libraries, aiming to explore kafka basic features such as topic provision, schema evolution with compatibality, offset adjustment, generic avro producer and consumer, specific avro producer and consumer.
 
 ## Getting Started
 
 ### Prerequisites
-1. Install gcloud on Deskstop 
-2. Install AppEngine Cloud SDK for Java 8
+1. Install java8, maven
+2. Install gcloud, AppEngine Cloud SDK for Java 8
 ```
 gcloud components install app-engine-java
 ```
@@ -26,17 +26,17 @@ You can see the cluster is up, and there is one topic named **demo** has been pr
 ## Running the tests
 
 The application expose several controller endpoints as following:
-* Topic Controller: 
+* **Topic Controller**: 
     * create topic given topic name, partition number and replication factor 
-* Schema Controller: 
+* **Schema Controller**: 
     * retrieve current schema for a given topic
     * update schema for a given topic
-* Offser Controller:
+* **Offset Controller**:
     * adjust offset of all partitions of a given topic to earliest or latest based on offset reset strategy
-* Generic Avro Controller:
+* **Generic Avro Controller**:
     * produce generic avro record for a given topic 
     * consume generic avro record for a given topic
-* Specific Avro Controller:
+* **Specific Avro Controller**:
     * produce specific avro record for a given topic 
     * consume specific avro record for a given topic 
 
@@ -187,23 +187,18 @@ curl -X GET \
 ```
 
 
+## To deloy application into GCP AppEngine environment
 
+### local start app
+`mvn appengine:run`
 
-
-
-
-
-
-
-
-## local start app
- mvn appengine:run
-
-## deploy to cloud
- mvn appengine:deploy
+### deploy to cloud
+```
+mvn appengine:deploy
 
 mvn appengine:run -Dspring.profiles.active=local
 mvn appengine:run -Dspring.profiles.active=dev
 
 mvn appengine:deploy -Dspring.profiles.active=local
 mvn package appengine:deploy -Dspring.profiles.active=dev
+```
