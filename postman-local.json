@@ -51,7 +51,7 @@
 			"name": "producer",
 			"item": [
 				{
-					"name": "publish singleton",
+					"name": "publish singleton [specific]",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -84,7 +84,40 @@
 					"response": []
 				},
 				{
-					"name": "publish batch",
+					"name": "publish singleton [generic]",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Charlie\",\n\t\"age\": 18,\n\t\"height\": 185.0\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/publish/generic/singleton",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publish",
+								"generic",
+								"singleton"
+							]
+						},
+						"description": "publish a single record"
+					},
+					"response": []
+				},
+				{
+					"name": "publish batch [specific]",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -115,6 +148,39 @@
 						"description": "publish a single record"
 					},
 					"response": []
+				},
+				{
+					"name": "publish batch [generic]",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"name\": \"Aaron\",\n        \"age\": 18,\n        \"height\": 184.5\n    },\n    {\n        \"name\": \"Eric\",\n        \"age\": 23,\n        \"height\": 165.6\n    },\n    {\n        \"name\": \"Tom\",\n        \"age\": 13,\n        \"height\": 173.4\n    }\n]"
+						},
+						"url": {
+							"raw": "http://localhost:8080/publish/generic/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"publish",
+								"generic",
+								"batch"
+							]
+						},
+						"description": "publish a single record"
+					},
+					"response": []
 				}
 			]
 		},
@@ -136,6 +202,27 @@
 							"path": [
 								"subscribe",
 								"specific"
+							]
+						},
+						"description": "consumer specific records"
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe generic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribe/generic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribe",
+								"generic"
 							]
 						},
 						"description": "consumer specific records"
