@@ -68,19 +68,19 @@ curl -X POST \
   -H 'cache-control: no-cache' \
   -d '[
     {
-        "name": "Charlie",
+        "name": "Eric",
+        "age": 27,
+        "income": 200000
+    },
+    {
+        "name": "Aaron",
+        "age": 32,
+        "income": 250000
+    },
+    {
+        "name": "Shofyan",
         "age": 18,
-        "income": 2700
-    },
-    {
-        "name": "Chorong",
-        "age": 23,
-        "income": 1700
-    },
-    {
-        "name": "Kim",
-        "age": 13,
-        "income": 700
+        "income": 180000
     }
 ]'
 ```
@@ -142,19 +142,19 @@ curl -X POST \
   -H 'cache-control: no-cache' \
   -d '[
     {
-        "name": "Aaron",
-        "age": 18,
-        "height": 184.5
+        "name": "Charlie",
+        "age": 27,
+        "height": 185.0
     },
     {
-        "name": "Eric",
-        "age": 23,
-        "height": 165.6
+        "name": "Chris",
+        "age": 35,
+        "height": 175.5
     },
     {
         "name": "Tom",
-        "age": 13,
-        "height": 173.4
+        "age": 40,
+        "height": 190.8
     }
 ]'
 ```
