@@ -17,7 +17,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<springboot.version>2.2.0.RELEASE</springboot.version>
+		<springboot.version>2.5.12</springboot.version>
 		<kafka.version>2.2.0</kafka.version>
 		<confluent.version>5.2.1</confluent.version>
 		<avro.version>1.9.1</avro.version>
